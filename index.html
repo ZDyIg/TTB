@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script type="text/javascript" >
+        const DOC = document.getElementById("canvas");
+        const context = DOC.getContext("2d");
+
+
+        context.fillStyle = "blue";
+        context.fillRect(20,20,130,100);
+
+        context.fillStyle = "red";
+        context.fillRect(50,80,130,100);
+
+        context.fillStyle = "aqua"
+        context.fillRect(100,120,130,100);
+    </script>
+
+    <style type = "text/css">
+        body{
+            background-color: blanchedalmond;
+        }
+
+        canvas{
+            background-color: rebeccapurple;
+        }
+    </style>
+
+</body>
+</html>
