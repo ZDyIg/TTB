@@ -13,25 +13,47 @@
         const context = DOC.getContext("2d");
 
 
-        context.fillStyle = "blue";
+        context.fillStyle = "rgb(159, 226, 191)";
         context.fillRect(20,20,130,100);
 
-        context.fillStyle = "red";
-        context.fillRect(50,80,130,100);
+        context.fillStyle = "rgb(217, 243, 166)";
+        context.fillRect(120,100,130,100);
 
-        context.fillStyle = "aqua"
-        context.fillRect(100,120,130,100);
+        context.fillStyle = "rgb(204, 204, 255)"
+        context.fillRect(220,180,130,100);
+
+        context.strokeStyle = "rgb(247, 255, 167)"
+        context.strokeRect(320,260,130,100)
+
+        context.strokeStyle ="rgb(255, 220, 250)"
+        context.strokeRect(420,340,130,100)
+
+        context.beginPath();
+        context.lineJoin = "round";
+        context.moveTo(320,300);
+        context.lineTo(320,434);
+        context.lineTo(590,350);
+       context.closePath();
+
+        context.fillStyle = "rgb(148, 214, 192, 0.5)"
+        context.fill();
+        context.strokeStyle = "rgb(136, 176, 223)"
+        context.lineWidth = 2;
+        context.stroke();
+
+
     </script>
 
     <style type = "text/css">
         body{
-            background-color: blanchedalmond;
+            background-color: rgb(255, 255, 255);
         }
 
         canvas{
-            background-color: rebeccapurple;
+            background-color: rgb(202, 147, 147);
         }
     </style>
 
 </body>
 </html>
+
