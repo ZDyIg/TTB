@@ -84,7 +84,6 @@
         context.stroke();
         context.fill();
 
-
         //Aqui empieza el arco incompleto
         context.fillStyle="rgb(159, 181, 180)";
         context.beginPath();
@@ -110,8 +109,6 @@
        context.fillStyle = grd;
        context.fillRect(600,200,250,150);
 
-   
-
       const grdL = context.createLinearGradient(650, 0, 250, 170);
       grdL.addColorStop(0, "rgb(136, 201, 146)");
       grdL.addColorStop(0.5, "rgb(218, 247, 166)");
@@ -119,15 +116,12 @@
 
       context.fillStyle = grdL;
       context.fillRect(420,480,500,200);
-      
 
-
-       
-    
-       
-
-       
-
+      img = new Image();
+      img.src = 'https://i.pinimg.com/564x/73/e0/83/73e08371d07a782fe7859d33311c6976.jpg'
+      img.onload = function(){
+        context.drawImage(img, 100,600,264,266);
+      };
 
     </script>
 
@@ -137,7 +131,7 @@
         }
 
         canvas{
-            background-color: rgb(202, 147, 147);
+            background-color: rgb(216, 184, 223);
         }
     </style>
 
