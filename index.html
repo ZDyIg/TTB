@@ -11,7 +11,7 @@
     <script type="text/javascript" >
         const DOC = document.getElementById("canvas");
         const context = DOC.getContext("2d");
-
+        
 
         context.fillStyle = "rgb(159, 226, 191)";
         context.fillRect(20,20,130,100);
@@ -101,9 +101,16 @@
         context.fillText("verde- amarillo- cafe claro", 200,80);
         context.strokeStyle = "rgb(107, 161, 240)"
         context.strokeText("verde- amarillo- cafe claro", 200,80);
-
-
-
+        
+       const grd = context.createRadialGradient(675,250,20,675,250,100);
+       grd.addColorStop(0,"rgb(207, 167, 213)");
+       grd.addColorStop(0.5, "rgb(144, 142, 212)");
+       grd.addColorStop(1, "rgb(144, 142, 212)");
+       
+       context.fillStyle = grd;
+       context.fillRect(600,200,250,150);
+       
+    
        
 
        
