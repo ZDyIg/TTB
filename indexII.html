@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script type="text/javascript" >
+        const DOC = document.getElementById("canvas");
+        const context = DOC.getContext("2d");
+        var figura = 0;
+
+        function getRandomColor() {
+        var trans = '0.5'; // 50% transparency
+        var color = 'rgba(';
+        for (var i = 0; i < 3; i++) {
+            color += Math.floor(Math.random() * 255) + ',';
+        }
+        color += trans + ')'; // add the transparency
+        return color;
+}
+  
+        document.getElementById("canvas").addEventListener("mouseover",(event) => {
+            context.fillStyle=getRandomColor();
+            
+
+            
+        });
+
+        document.getElementById("canvas").addEventListener("mousedown",(event) => {
+            context.beginPath();
+            context.arc(event.x,event.y,60,0,2*Math.PI);
+            context.fill();
+
+            
+        });
+
+        
+      
+    </script>
+
+<style type = "text/css">
+    body{
+        background-color: rgb(255, 255, 255);
+    }
+
+    canvas{
+        background-color: rgb(216, 184, 223);
+    }
+</style>
+</body>
+</html>
