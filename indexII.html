@@ -60,13 +60,35 @@
 
         });
 
+        let isDrawing = false;
         const radius = 5;
+        const color = "black";
 
-        canvas.addEventListener('mousemove', (e) => {
-            drawPoint(e.offsetX, e.offsetY);
+
+        canvas.addEventListener("mousedown", (e) => {
+            x = e.offsetX;
+            y = e.offsetY;
+            isDrawing = true;
         });
 
-        function drawPoint(x, y) {
+        canvas.addEventListener("mousemove", (e) => {
+            if (isDrawing) {
+                drawCircle(context, x, y, e.offsetX, e.offsetY);
+                x = e.offsetX;
+                y = e.offsetY;
+            }
+        });
+
+        canvas.addEventListener("mouseup", () => {
+            isDrawing = false;
+        });
+
+        canvas.addEventListener("mouseout", () => {
+            isDrawing = false;
+        });
+
+
+        function drawCircle(context, x, y) {
             context.beginPath();
             context.arc(x, y, radius, 0, 2 * Math.PI);
             context.fill();
