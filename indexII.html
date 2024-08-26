@@ -17,6 +17,7 @@
 
 
 
+        //NO MOVER (si la mueves deja de funcionar)
         function getRandomColor() {
             var trans = '0.5'; // 50% transparency
             var color = 'rgba(';
@@ -49,16 +50,30 @@
 
         document.getElementById("canvas").addEventListener("mousedown", (event) => {
 
-            if(figura==1){
+            if (figura == 1) {
                 context.beginPath();
                 context.arc(event.x, event.y, 60, 0, 2 * Math.PI);
                 context.fill();
-            }else{
-                context.fillRect(event.x, event.y, 100,100);
+            } else {
+                context.fillRect(event.x, event.y, 100, 100);
             }
 
-
         });
+
+        const radius = 5;
+
+        canvas.addEventListener('mousemove', (e) => {
+            drawPoint(e.offsetX, e.offsetY);
+        });
+
+        function drawPoint(x, y) {
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI);
+            context.fill();
+            context.closePath();
+            context.fillStyle = color;
+        }
+
 
     </script>
 
