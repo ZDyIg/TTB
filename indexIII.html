@@ -17,6 +17,10 @@
         var x = 100;
         var y = 100;
 
+        const z = 30;
+        const v = 30;
+
+
 
         function drawRect() {
             context.clearRect(0, 0, DOC.width, DOC.height);
@@ -25,7 +29,6 @@
             context.fillRect(x, y, 30, 30);
             context.strokeRect(x, y, 30, 30);
         }
-
 
 
         document.addEventListener('keydown', (event) => {
@@ -48,11 +51,23 @@
                     break;
             }
 
+            if (x < - z) {
+                x = canvas.width;
+            } else if (x > canvas.width) {
+                x = -z;
+            }
+
+            if (y < -v) {
+                y = canvas.height;
+            } else if (y > canvas.height) {
+                y = - v;
+            }
+
             drawRect();
 
         });
 
-
+        drawRect();
 
 
         context.fillStyle = "red";
