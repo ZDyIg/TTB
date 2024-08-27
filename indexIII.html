@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script>type = "text/javascript"
+        const DOC = document.getElementById("canvas");
+        const context = DOC.getContext("2d");
+        const speed = 5;
+        var x = 100;
+        var y = 100;
+
+
+        function drawRect() {
+            context.clearRect(0, 0, DOC.width, DOC.height);
+
+            context.fillStyle = "red";
+            context.fillRect(x, y, 30, 30);
+            context.strokeRect(x, y, 30, 30);
+        }
+
+
+
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+
+                case "w":
+                    y -= speed
+                    break;
+
+                case "s":
+                    y += speed
+                    break;
+
+                case "a":
+                    x -= speed
+                    break;
+
+                case "d":
+                    x += speed
+                    break;
+            }
+
+            drawRect();
+
+        });
+
+
+
+
+        context.fillStyle = "red";
+        context.fillRect(x, y, 30, 30);
+        context.strokeRect(x, y, 30, 30);
+
+
+
+    </script>
+
+
+    <style type="text/css">
+        body {
+            background-color: rgb(255, 255, 255);
+        }
+
+        canvas {
+            background-color: rgb(216, 184, 223);
+        }
+    </style>
+</body>
+
+</html>
