@@ -13,7 +13,7 @@
     <script>type = "text/javascript"
         const DOC = document.getElementById("canvas");
         const context = DOC.getContext("2d");
-        const speed = 5;
+        var speed = 5;
         var x = 100;
         var y = 100;
 
@@ -64,25 +64,16 @@
                     direction = "rigth"
                     break;
 
-                //case "l":
-                   // console.log(event.key);
-                   // speed += 2;
-                   // break;
+                case "l":
+                    console.log(event.key);
+                    speed += 2;
+                    break;
 
             }
 
 
 
         });
-
-
-        // document.addEventListener('keyup', (event) => {
-        //     if (event.key === 'w' && direction === 'up') direction = '';
-        //     if (event.key === 's' && direction === 'down') direction = '';
-        //     if (event.key === 'a' && direction === 'left') direction = '';
-        //     if (event.key === 'd' && direction === 'right') direction = '';
-        // });
-
 
         function update() {
             switch (direction) {
