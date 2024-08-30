@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos personales</title>
+    <style>
+        body {
+            font-family: Bakso Sapi;
+            color: #3A3E3B;
+            margin: 20 px;
+
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #D4EAC8;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(192, 216, 224);
+        }
+
+        .group {
+            margin-bottom: 20px;
+        }
+
+        .group label {
+            display: block;
+            margin-bottom: auto;
+        }
+
+        .group input[type="text"],
+        .group input[type="text"],
+        .group input[type="email"],
+        .group input[type="date"],
+        .group input[type="tel"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #CAD49D;
+            border-radius: 4px;
+        }
+
+        .group input[type="submit"] {
+            background-color: #ADAABF;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: medium;
+            margin: auto;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: backgroud-color 0.5s;
+        }
+
+        .group input[type="submit"]:hover {
+            background-color: #83A0A0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Formulario de Datos Personales</h1>
+        <form action="/submit-form" method="post">
+            <div class="group">
+                <label for="nombre">Nombre: </label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="group">
+                <label for="apellido">Apellido: </label>
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div class="group">
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="group">
+                <label for="fecha">Fecha de Nacimiento: </label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="group">
+                <label for="telefono">Telefono: </label>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}"
+                    title="Obligatoriamente contener 10 digitos" required>
+            </div>
+            <div class="group">
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault(); 
+    
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const email = document.getElementById('email').value;
+            const fecha = document.getElementById('fecha').value;  
+            const telefono = document.getElementById('telefono').value;
+    
+        //     const sql = `INSERT INTO datos_personales (nombre, apellido, email, fecha, telefono) VALUES ('${nombre}', '${apellido}', '${email}', '${fecha}', '${telefono}');`;
+    
+        //     console.log(sql);
+    
+        // });
+
+        fetch('/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre, apellido, email, fecha, telefono }),
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data); 
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    </script>
+
+</body>
+
+</html>

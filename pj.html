@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script type="text/javascript">
+        const DOC = document.getElementById("canvas");
+        const context = DOC.getContext("2d");
+
+        //orejas
+        context.fillStyle = "rgb(168, 249, 255)"
+        context.beginPath();
+        context.arc(365, 250, 60, 2, 2 * Math.PI);
+        context.fill();
+
+
+        context.fillStyle = "rgb(168, 249, 255)"
+        context.beginPath();
+        context.arc(630, 250, 60, 0, 2 * Math.PI);
+        context.fill();
+
+        //cabeza
+        context.fillStyle = "rgb(168, 249, 255)"
+        context.beginPath();
+        context.arc(500, 400, 200, 0, 2 * Math.PI);
+        context.fill();
+
+        //mascara
+        context.fillStyle = "white"
+        context.beginPath();
+        context.arc(500, 400, 180, 0, 2 * Math.PI);
+        context.fill();
+
+
+        context.fill();
+        context.strokeStyle = "black"
+        context.lineWidth = 1;
+        context.stroke();
+
+
+
+        //relleno de orejas
+        context.fillStyle = "rgb(240, 240, 240)"
+        context.beginPath();
+        context.arc(640, 240, 30, 0, 2 * Math.PI);
+        context.fill();
+
+
+
+        context.fillStyle = "rgb(2240, 240, 240)"
+        context.beginPath();
+        context.arc(355, 240, 30, 0, 2 * Math.PI);
+        context.fill();
+
+
+        //mancha de nariz
+        // context.fillStyle = "rgb(250, 249, 249)"
+        // context.beginPath();
+        // context.arc(500,450,40,0,2*Math.PI);
+        // context.fill();
+
+        // context.fill();
+        // context.strokeStyle = "black"
+        // context.lineWidth = 1;
+        // context.stroke();
+
+        //nariz
+        context.fillStyle = "black"
+        context.beginPath();
+        context.arc(500, 450, 10, 0, 2 * Math.PI);
+        context.fill();
+        //fosas - nariz de calavera
+        context.fillStyle = "black"
+        context.beginPath();
+        context.arc(505, 455, 7, 0, 2 * Math.PI);
+        context.fill();
+
+        context.fillStyle = "black"
+        context.beginPath();
+        context.arc(495, 455, 5, 0, 2 * Math.PI);
+        context.fill();
+
+        // context.beginPath();
+        // context.lineJoin = "round";
+        // context.moveTo(500,480);
+        // context.lineTo(500,440);
+        // context.closePath();
+
+        context.fillStyle = "black"
+        context.fill();
+        context.strokeStyle = "black"
+        context.lineWidth = 5;
+        context.stroke();
+
+        //ojos
+        context.fillStyle = "black"
+        context.beginPath();
+        context.arc(390, 400, 50, 0, 2 * Math.PI);
+        context.fill();
+
+        context.fillStyle = "black"
+        context.beginPath();
+        context.arc(600, 400, 50, 0, 2 * Math.PI);
+        context.fill();
+
+        context.fillStyle = "rgb(0, 184, 255)"
+        context.beginPath();
+        context.arc(600, 400, 30, 2.2, 2 * Math.PI);
+        context.fill();
+
+        context.fillStyle = "black"
+        context.beginPath();
+        context.arc(600, 400, 10, 0, 2 * Math.PI);
+        context.fill();
+
+        //Boca 
+        context.strokeStyle = "black";
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(480, 490);
+        context.lineTo(520, 490);
+        context.stroke();
+
+        //quien es este sujeto
+        context.font = "30px Arial"; 
+        context.fillStyle = "black"; 
+
+        const text = "Azulin de Unicorn Wars";
+        const textX = 800; 
+        const textY = 800; 
+
+        const textWidth = context.measureText(text).width;
+        context.fillText(text, textX - textWidth / 2, textY);
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <style type="text/css">
+        body {
+            background-color: rgb(33, 80, 66);
+        }
+
+        canvas {
+            background-color: rgb(230, 190, 255);
+        }
+    </style>
+</body>
+
+</html>
