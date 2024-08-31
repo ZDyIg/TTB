@@ -14,6 +14,7 @@
         const DOC = document.getElementById("canvas");
         const context = DOC.getContext("2d");
 
+        //cuerpo
         context.fillStyle = "rgb(40, 32, 30)";
         context.beginPath();
         context.arc(500, 600, 150, Math.PI, 2 * Math.PI); 
@@ -62,32 +63,16 @@
         context.lineWidth = 1;
         context.stroke();
 
-
-
         //relleno de orejas
         context.fillStyle = "rgb(240, 240, 240)"
         context.beginPath();
         context.arc(640, 240, 30, 0, 2 * Math.PI);
         context.fill();
 
-
-
         context.fillStyle = "rgb(2240, 240, 240)"
         context.beginPath();
         context.arc(355, 240, 30, 0, 2 * Math.PI);
         context.fill();
-
-
-        //mancha de nariz
-        // context.fillStyle = "rgb(250, 249, 249)"
-        // context.beginPath();
-        // context.arc(500,450,40,0,2*Math.PI);
-        // context.fill();
-
-        // context.fill();
-        // context.strokeStyle = "black"
-        // context.lineWidth = 1;
-        // context.stroke();
 
         //nariz
         context.fillStyle = "black"
@@ -104,12 +89,6 @@
         context.beginPath();
         context.arc(495, 455, 5, 0, 2 * Math.PI);
         context.fill();
-
-        // context.beginPath();
-        // context.lineJoin = "round";
-        // context.moveTo(500,480);
-        // context.lineTo(500,440);
-        // context.closePath();
 
         context.fillStyle = "black"
         context.fill();
