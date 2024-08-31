@@ -14,6 +14,24 @@
         const DOC = document.getElementById("canvas");
         const context = DOC.getContext("2d");
 
+        context.fillStyle = "rgb(40, 32, 30)";
+        context.beginPath();
+        context.arc(500, 600, 150, Math.PI, 2 * Math.PI); 
+        context.fill();
+
+        context.fillRect(350, 600, 300, 150);
+
+        //manos
+        context.fillStyle = "rgb(168, 249, 255)";
+        context.beginPath();
+        context.arc(340, 680, 30, 0, 2 * Math.PI);
+        context.fill();
+
+        context.beginPath();
+        context.arc(660, 680, 30, 0, 2 * Math.PI);
+        context.fill();
+
+
         //orejas
         context.fillStyle = "rgb(168, 249, 255)"
         context.beginPath();
@@ -129,16 +147,22 @@
         context.stroke();
 
         //quien es este sujeto
-        context.font = "30px Arial"; 
-        context.fillStyle = "black"; 
+        context.font = "30px Arial";
+        context.fillStyle = "black";
 
         const text = "Azulin de Unicorn Wars";
-        const textX = 800; 
-        const textY = 800; 
+        const textX = 800;
+        const textY = 800;
 
         const textWidth = context.measureText(text).width;
         context.fillText(text, textX - textWidth / 2, textY);
- 
+
+
+
+
+
+
+
 
 
 
