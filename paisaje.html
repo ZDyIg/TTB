@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paisaje</title>
+</head>
+
+<body>
+
+    <canvas id="canvas" width="1500" height="1000"></canvas>
+    <script type="text/javascript">
+        const DOC = document.getElementById("canvas");
+        const context = DOC.getContext("2d");
+
+        //sol
+        context.fillStyle = "yellow"
+        context.beginPath();
+        context.arc(50, 50, 200, 0, 2 * Math.PI);
+        context.fill();
+
+        //duraznos
+        for (let i = 0; i < 800; i++) {
+            context.beginPath();
+            context.moveTo(120 + (i * 60), 1000);
+            context.quadraticCurveTo(130 + (i * 60), 800, 120 + (i * 60), 580);
+            context.stroke();
+
+            context.beginPath();
+            context.arc(500 + (i * 60) - 10, 700, 10, 0, Math.PI * 2, true);
+            context.fillStyle = "pink";
+            context.fill();
+
+            context.beginPath();
+            context.arc(410 + (i * 60) + 10, 900, 10, 0, Math.PI * 2, true);
+            context.fillStyle = "pink";
+            context.fill();
+        }
+
+        context.fillStyle = "green";
+        context.beginPath();
+        context.arc(0, 950, 500, Math.PI, 2 * Math.PI);
+        context.fill();
+
+
+        context.fillStyle = "green"
+        context.beginPath();
+        context.arc(0, 950, 500, Math.PI, 2 * Math.PI);
+        context.fill();
+        
+        context.fillStyle = "rgb(163, 240, 90)"
+        context.fillRect(0, 950, 2000, 1000);
+
+        context.fillStyle = "rgb(139, 114, 100)"
+        context.beginPath();
+        context.arc(700, 1000, 500, Math.PI, 2 * Math.PI);
+        context.fill();
+
+
+        context.fillStyle = "rgb(108, 26, 16)";
+        context.fillRect(150, 450, 60, 1030);
+
+        context.fillStyle = "rgb(108, 26, 16)";
+        context.fillRect(120, 500, 1200, 60);
+
+        //enredaderas
+        context.strokeStyle = "green";
+        context.lineWidth = 2;
+
+        for (let i = 0; i < 20; i++) {
+            context.beginPath();
+            context.moveTo(120 + (i * 60), 500);
+            context.quadraticCurveTo(130 + (i * 60), 540, 120 + (i * 60), 580);
+            context.stroke();
+
+            context.beginPath();
+            context.arc(120 + (i * 60) - 10, 540, 5, 0, Math.PI * 2, true);
+            context.fillStyle = "green";
+            context.fill();
+
+            context.beginPath();
+            context.arc(120 + (i * 60) + 10, 560, 5, 0, Math.PI * 2, true);
+            context.fillStyle = "green";
+            context.fill();
+        }
+
+
+        context.fillStyle = "rgb(158, 110, 84)"
+        context.beginPath();
+        context.arc(700, 900, 210, 0, 2 * Math.PI);
+        context.fill();
+
+        context.lineWidth = 50;
+        context.strokeStyle = "rgb(184,158,157)"
+        context.stroke();
+        context.fill();
+
+
+        //Tablas de púerta
+        context.strokeStyle = "saddlebrown";
+        context.lineWidth = 5;
+
+        context.beginPath();
+        context.moveTo(640, 700);
+        context.lineTo(640, 1100);
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(540, 770);
+        context.lineTo(540, 1000);
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(740, 695);
+        context.lineTo(740, 1100);
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(840, 750);
+        context.lineTo(840, 1100);
+        context.stroke();
+
+        //Manija de puerta
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+
+        context.beginPath();
+        context.moveTo(890, 850);
+        context.lineTo(890, 890);
+        context.stroke();
+
+
+        //la lampara
+        context.fillStyle = "black";
+        context.fillRect(1090, 700, 20, 300);
+
+        context.strokeStyle = "black";
+        context.lineWidth = 20;
+        context.beginPath();
+        context.moveTo(1100, 700);
+        context.lineTo(1100, 600);
+        context.lineTo(950, 600);
+        context.stroke();
+
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.beginPath();
+        context.moveTo(950, 600);
+        context.lineTo(950, 670);
+        context.stroke();
+
+        context.fillStyle = "gold";
+        context.beginPath();
+        context.moveTo(950, 670);
+        context.lineTo(920, 720);
+        context.lineTo(950, 770);
+        context.lineTo(980, 720);
+        context.closePath();
+        context.fill();
+
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.stroke();
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+    <style type="text/css">
+        body {
+            background-color: rgb(85, 87, 139);
+        }
+
+        canvas {
+            background-color: rgb(118, 190, 229);
+        }
+    </style>
+
+</body>
+
+</html>
