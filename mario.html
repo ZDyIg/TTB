@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1500" height="1000"></canvas>
+    <script type="text/javascript">
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+        const size = 50;
+
+        //tubo verde
+        context.fillStyle = "rgb(20,95,13)";
+        context.strokeStyle = "black"
+        context.lineWidth = 5;
+        context.fillRect(1100, 600, 200, 80);
+        context.strokeRect(1100, 600, 200, 80);
+
+        context.fillStyle = "rgb(20,95,13)";
+        context.strokeStyle = "black"
+        context.lineWidth = 5;
+        context.fillRect(1120, 680, 160, 200);
+        context.strokeRect(1120, 680, 160, 200);
+
+        context.fillStyle = "rgb(25,122,16)";
+        context.fillRect(1260, 610, 30, 60);
+
+        context.fillStyle = "rgb(179,238,254)";
+        context.fillRect(1270, 615, 20, 50);
+
+        context.fillStyle = "rgb(25,122,16)";
+        context.fillRect(1240, 690, 30, 200);
+
+        context.fillStyle = "rgb(179,238,254)";
+        context.fillRect(1250, 690, 20, 160);
+
+        //tablero 
+        function board(sqX, sqY, width, height, colors) {
+            for (let y = sqY; y < sqY + height; y += size) {
+                for (let x = sqX; x < sqX + width; x += size) {
+                    context.fillStyle = colors[(Math.floor(y / size) + Math.floor(x / size)) % 2];
+                    context.fillRect(x, y, size, size);
+                }
+            }
+        }
+        const colors = ["rgb(168,114,69)", "rgb(94, 63, 37)"];
+        board(150, 850, 2000, 80, colors);
+        board(150, 950, 2000, 100, colors);
+
+        //cuadros cafes
+        context.fillStyle = "rgb(238,154,101)"
+        context.fillRect(150, 850, 2000, 30);
+
+        context.fillStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(500, 350, 300, 500)
+
+        context.fillStyle = "rgb(132, 192, 255)";
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(600, 250, 300, 600);
+        context.strokeRect(600, 250, 300, 600);
+
+        context.fillStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(300, 580, 270, 270);
+
+
+        //muros
+        context.fillStyle = "pink";
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(400, 550, 300, 300);
+        context.strokeRect(400, 550, 300, 300);
+
+        context.fillStyle = "rgb(255,174,198)";
+        context.fillRect(680, 570, 15, 270, 0.2);
+
+        context.fillStyle = "rgb(255,174,198)";
+        context.fillRect(420, 830, 270, 15, 0.2);
+
+        context.fillStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(70, 200, 100, 100)
+
+        context.fillStyle = "rgb(255,144,97)";
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(100, 190, 100, 100);
+        context.strokeRect(100, 190, 100, 100);
+
+        context.fillStyle = "rgb(118,168,255)";
+        context.fillRect(880, 255, 15, 500, 0.2);
+
+        context.fillStyle = "rgb(118,168,255)";
+        context.fillRect(710, 830, 170,15, 0.2);
+
+
+        context.fillStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(490, 70, 200, 100)
+
+        context.fillStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(1350, 600, 250, 250)
+
+        context.fillStyle = "rgb(255,144,97)";
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(500, 50, 100, 100);
+        context.strokeRect(500, 50, 100, 100);
+
+
+        context.fillStyle = "rgb(255,144,97)";
+        context.strokeStyle = "black";
+        context.lineWidth = 5;
+        context.fillRect(600, 50, 100, 100);
+        context.strokeRect(600, 50, 100, 100);
+
+        //tornillos 
+
+        context.fillStyle = "gray"
+        context.strokeStyle = "black";
+        context.lineWidth = 3;
+
+        context.beginPath();
+        context.arc(420, 570, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(680, 570, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(420, 830, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(680, 830, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        //tornillos cafe
+        context.beginPath();
+        context.arc(110, 205, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(190, 205, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(190, 280, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(110, 280, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        //
+        context.beginPath();
+        context.arc(510, 65, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(590, 65, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(590, 135, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(510, 135, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        //tornillos blue
+        context.beginPath();
+        context.arc(620, 275, 10, 100, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.arc(880, 275, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+
+
+        //imagenes
+        img1 = new Image();
+        img1.src = 'https://i.pinimg.com/originals/5b/da/ae/5bdaae9c66b57026501e5035019fa959.png'
+        img1.onload = function () {
+            context.drawImage(img1, 600, 50, 100, 100);
+        };
+
+        context.fillStyle = "rgb(81,217,160)";
+        context.strokeStyle = "black"
+        context.lineWidth = 5;
+        context.fillRect(1400, 550, 300, 300);
+        context.strokeRect(1400, 550, 300, 300);
+
+        img2 = new Image();
+        img2.src = 'https://i.pinimg.com/originals/1c/4f/72/1c4f7253761a365ef3a729afe17ee71a.png'
+        img2.onload = function () {
+            context.drawImage(img2, 800, 700, 150, 150);
+        };
+
+        img3 = new Image();
+        img3.src = 'https://i.pinimg.com/originals/be/27/3e/be273e819c1fbb2e1237a00d4af6cfea.png'
+        img3.onload = function () {
+            context.drawImage(img3, 1070, 410, 200, 200);
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <style type="text/css">
+        body {
+            background-color: rgb(85, 87, 139);
+        }
+
+        canvas {
+            background-color: rgb(145, 178, 233);
+        }
+    </style>
+
+    </script>
+</body>
+
+</html>
