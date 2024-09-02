@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1500" height="1000"></canvas>
+    <script type="text/javascript">
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+        const numLeaves = 10;
+        const space = 10;
+        const size = 50;
+
+        // Tronco de la palma
+        context.fillStyle = "#8B4513";
+        context.fillRect(700, 500, 20, 750);
+
+        //color de hojas
+        context.strokeStyle = "green";
+        context.lineWidth = 5;
+
+        // Hojas
+        context.beginPath();
+        context.moveTo(710, 500);
+        context.lineTo(810, 400);
+        context.stroke();
+
+        for (let i = 0; i <= numLeaves; i++) {
+            const t = i / numLeaves;
+            const x = 710 + t * (810 - 710);
+            const y = 500 + t * (400 - 500);
+
+            context.beginPath();
+            context.moveTo(x, y - space);
+            context.lineTo(x, y + space);
+            context.stroke();
+        }
+
+        context.beginPath();
+        context.moveTo(710, 500);
+        context.lineTo(780, 350);
+        context.stroke();
+
+        for (let i = 0; i <= numLeaves; i++) {
+            const t = i / numLeaves;
+            const x = 710 + t * (780 - 710);
+            const y = 500 + t * (350 - 500);
+
+            context.beginPath();
+            context.moveTo(x, y - space);
+            context.lineTo(x, y + space);
+            context.stroke();
+        }
+
+        context.beginPath();
+        context.moveTo(710, 500);
+        context.lineTo(610, 400);
+        context.stroke();
+
+        for (let i = 0; i <= numLeaves; i++) {
+            const t = i / numLeaves;
+            const x = 710 + t * (610 - 710);
+            const y = 500 + t * (400 - 500);
+
+            context.beginPath();
+            context.moveTo(x, y - space);
+            context.lineTo(x, y + space);
+            context.stroke();
+        }
+
+        context.beginPath();
+        context.moveTo(710, 500);
+        context.lineTo(640, 350);
+        context.stroke();
+
+        for (let i = 0; i <= numLeaves; i++) {
+            const t = i / numLeaves;
+            const x = 710 + t * (640 - 710);
+            const y = 500 + t * (350 - 500);
+
+            context.beginPath();
+            context.moveTo(x, y - space);
+            context.lineTo(x, y + space);
+            context.stroke();
+        }
+
+        context.beginPath();
+        context.moveTo(710, 500);
+        context.lineTo(710, 300);
+        context.stroke();
+
+        for (let i = 0; i <= numLeaves; i++) {
+            const t = i / numLeaves;
+            const y = 500 + t * (300 - 500);
+
+            context.beginPath();
+            context.moveTo(710 - space, y);
+            context.lineTo(710 + space, y);
+            context.stroke();
+        }
+
+        //flor
+        context.fillStyle = "rgb(34, 100, 51)";
+        context.fillRect(1000, 700, 20, 850);
+
+        context.fillStyle = "rgb(255,197,85)";
+
+        context.beginPath();
+        context.moveTo(1000, 700);
+        context.quadraticCurveTo(1030, 660, 1060, 700);
+        context.quadraticCurveTo(1030, 740, 1000, 700);
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(1000, 700);
+        context.quadraticCurveTo(970, 660, 940, 700);
+        context.quadraticCurveTo(970, 740, 1000, 700);
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(1000, 700);
+        context.quadraticCurveTo(1040, 730, 1000, 760);
+        context.quadraticCurveTo(960, 730, 1000, 700);
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(1000, 700);
+        context.quadraticCurveTo(1040, 670, 1000, 640);
+        context.quadraticCurveTo(960, 670, 1000, 700);
+        context.fill();
+
+        context.fillStyle = "rgb(139,56,6)"
+        context.beginPath();
+        context.arc(1000, 700, 10, 0, 2 * Math.PI);
+        context.fill();
+
+        //pasto
+        context.fillStyle = "rgb(163, 240, 90)"
+        context.fillRect(0, 850, 2000, 1000);
+
+        context.fillStyle = "rgb(39, 66, 24)"
+        context.fillRect(0, 870, 2000, 1000);
+
+        context.fillStyle = "rgb(112, 137, 98)"
+        context.fillRect(0, 950, 2000, 1000);
+
+        //monedas
+        context.strokeStyle = "rgb(239, 239, 40)";
+        context.beginPath();
+        context.arc(220, 760, 30, 0, 2 * Math.PI);
+        context.stroke();
+
+        context.strokeStyle = "rgb(239, 239, 40)";
+        context.beginPath();
+        context.arc(340, 760, 30, 0, 2 * Math.PI);
+        context.stroke();
+
+        context.strokeStyle = "rgb(239, 239, 40)";
+        context.beginPath();
+        context.arc(460, 760, 30, 0, 2 * Math.PI);
+        context.stroke();
+
+        //tablero
+        function board(sqX, sqY, width, height, colors) {
+            for (let y = sqY; y < sqY + height; y += size) {
+                for (let x = sqX; x < sqX + width; x += size) {
+                    context.fillStyle = colors[(Math.floor(y / size) + Math.floor(x / size)) % 2];
+                    context.fillRect(x, y, size, size);
+                }
+            }
+        }
+        const colors = ["rgb(139, 69, 19, 0.3)", "rgb(160, 82, 45, 0.3)"]; 
+        board(0, 870, 2000, 80, colors); 
+        board(0, 950, 2000, 100, colors); 
+
+
+    </script>
+
+    <style type="text/css">
+        body {
+            background-color: rgb(85, 87, 139);
+        }
+
+        canvas {
+            background-color: rgb(50, 65, 150);
+        }
+    </style>
+
+</body>
+
+</html>
