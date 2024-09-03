@@ -9,8 +9,11 @@
 
 <body>
     <canvas id="canvas" width="500" height="500"></canvas>
+    
 
     <script>
+
+        //OJO :::: mantener el tamaño del canvas, el anterior crasheo por lo mismo
         const DOC = document.getElementById("canvas");
         const context = DOC.getContext("2d");
 
@@ -71,24 +74,49 @@
                     this.y + this.alto < otroRect.y);
             }
         }
-        const player = new Rectangulo("black", 30, 30, x, y);
-        const semilla = new Rectangulo("white", 10, 10, 300, 200);
+        var player = new Rectangulo("black", 30, 30, x, y);
+        var semilla = new Rectangulo("white", 10, 10, 300, 200);
+        var wall = new Rectangulo("gray", 30, 200, 70, 200)
+
 
         function drawRect() {
             context.clearRect(0, 0, DOC.width, DOC.height);
             player.update();
+
+
+            if (player.colision(wall)) {
+                switch (direction) {
+                    case "up":
+                        player.y += speed;
+                        break;
+                    case "down":
+                        player.y -= speed;
+                        break;
+                    case "right":
+                        player.x -= speed;
+                        break;
+                    case "left":
+                        player.x += speed;
+                        break;
+                }
+            }
             player.draw(context);
             semilla.draw(context);
-        
+            wall.draw(context);
 
-        if (player.colision(semilla)) {
-            player.color = "pink";
-            semilla.x = Math.random()*(DOC.width - semilla.ancho);
-            semilla.y =Math.random()*(DOC.height - semilla.alto);
-        }else{
-            player.color="black";
+
+            if (player.colision(semilla)) {
+                player.color = "pink";
+
+                do {//función para que no vaya a salir dentro de wall
+                    semilla.x = Math.random() * (DOC.width - semilla.ancho);
+                    semilla.y = Math.random() * (DOC.height - semilla.alto);
+                }while(semilla.colision(wall)); 
+            } else {
+                player.color = "black";
+            }
         }
-    }
+
 
 
         document.addEventListener('keydown', (event) => {
