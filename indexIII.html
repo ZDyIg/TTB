@@ -22,24 +22,32 @@
         let direction = '';
 
 
-        //NO MOVER (si la mueves deja de funcionar)
-        function getRandomColor() {
-            var trans = '0.5'; // 50% transparency
-            var color = 'rgba(';
-            for (var i = 0; i < 3; i++) {
-                color += Math.floor(Math.random() * 255) + ',';
-            }
-            color += trans + ')'; // add the transparency
-            return color;
-        }
+        var color = "black";
+        var player = new Rectangulo(color, 30, 30, x, y);
 
+
+        context.fillStyle = "red";
+        context.fillRect(50, 50, 100, 100);
+
+        class Rectangulo {
+            constructor(color, alto, ancho, x, y) {
+                this.color = color;
+                this.alto = alto;
+                this.ancho = ancho;
+                this.x = x;
+                this.y = y;
+            }
+
+            draw(context) {
+                context.fillStyle = this.color;
+                context.fillRect(this.x, this.y, this.ancho, this.alto);
+                context.strokeRect(this.x, this.y, this.ancho, this.alto);
+            }
+        }
 
         function drawRect() {
             context.clearRect(0, 0, DOC.width, DOC.height);
-
-            context.fillStyle = getRandomColor();
-            context.fillRect(x, y, 30, 30);
-            context.strokeRect(x, y, 30, 30);
+            player.draw(context);
         }
 
 
@@ -61,7 +69,7 @@
                     break;
 
                 case "d":
-                    direction = "rigth"
+                    direction = "right"
                     break;
 
                 case "l":
@@ -119,14 +127,6 @@
             drawRect();
             requestAnimationFrame(gameLoop);
         }
-
-
-
-
-
-        context.fillStyle = getRandomColor();
-        context.fillRect(x, y, 30, 30);
-        context.strokeRect(x, y, 30, 30);
 
         gameLoop();
 
