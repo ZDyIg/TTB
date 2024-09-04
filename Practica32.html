@@ -23,6 +23,9 @@
         let x = 100;
         let y = 100;
 
+        var pause = false;
+        var score = 0;
+
         class Rectangulo {
             constructor(color, alto, ancho, x, y) {
                 this.color = color;
@@ -39,34 +42,35 @@
             }
 
             update() {
-                switch (direction) {
-                    case "up":
-                        this.y -= speed;
-                        break;
-                    case "down":
-                        this.y += speed;
-                        break;
-                    case "right":
-                        this.x += speed;
-                        break;
-                    case "left":
-                        this.x -= speed;
-                        break;
-                }
+                if (!pause) {
+                    switch (direction) {
+                        case "up":
+                            this.y -= speed;
+                            break;
+                        case "down":
+                            this.y += speed;
+                            break;
+                        case "right":
+                            this.x += speed;
+                            break;
+                        case "left":
+                            this.x -= speed;
+                            break;
+                    }
 
-                if (this.x < -this.ancho) {
-                    this.x = DOC.width;
-                } else if (this.x > DOC.width) {
-                    this.x = -this.ancho;
-                }
+                    if (this.x < -this.ancho) {
+                        this.x = DOC.width;
+                    } else if (this.x > DOC.width) {
+                        this.x = -this.ancho;
+                    }
 
-                if (this.y < -this.alto) {
-                    this.y = DOC.height;
-                } else if (this.y > DOC.height) {
-                    this.y = -this.alto;
+                    if (this.y < -this.alto) {
+                        this.y = DOC.height;
+                    } else if (this.y > DOC.height) {
+                        this.y = -this.alto;
+                    }
                 }
             }
-
             colision(otroRect) {
                 return !(this.x > otroRect.x + otroRect.ancho ||
                     this.x + this.ancho < otroRect.x ||
@@ -79,7 +83,7 @@
         var walls = [
             new Rectangulo("gray", 30, 200, 70, 200),
             new Rectangulo("gray", 50, 20, 400, 70),
-            new Rectangulo ("gray", 30,200, 300,400)
+            new Rectangulo("gray", 30, 200, 300, 400)
         ]
 
         function drawRect() {
@@ -114,6 +118,7 @@
 
             if (player.colision(semilla)) {
                 player.color = "pink";
+                score += 10
 
                 do {//función para que no vaya a salir dentro de wall
                     semilla.x = Math.random() * (DOC.width - semilla.ancho);
@@ -124,8 +129,22 @@
             } else {
                 player.color = "black";
             }
-        }
 
+            if (pause) {
+
+                context.fillStyle = "rgb(195, 195, 195, 0.5)";
+                context.fillRect(0, 0, 500, 500);
+
+                context.fillStyle = "black";
+                context.font = "50px bakso sapi";
+                context.textAlign = "center";
+                context.fillText("Pausao", DOC.width / 2, DOC.height / 2);
+            } else {
+                context.fillStyle = "white";
+                context.font = "20px bakso sapi";
+                context.fillText("Score: " + score, 10, 30);
+            }
+        }
 
 
         document.addEventListener('keydown', (event) => {
@@ -143,13 +162,15 @@
                     direction = "right";
                     break;
                 case "l":
-                    speed += 2; // Aumentar la velocidad
+                    pause = !pause; // pause
                     break;
             }
         });
 
         function gameLoop() {
+            // if (!pause) {
             drawRect();
+            //}
             requestAnimationFrame(gameLoop);
         }
 
