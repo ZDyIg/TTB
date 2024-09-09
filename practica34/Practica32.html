@@ -26,20 +26,31 @@
         var pause = false;
         var score = 0;
 
+        const playerImage = new Image();
+        playerImage.src = 'https://i.pinimg.com/originals/c0/ce/bf/c0cebf4e6ffd4609c152c08908c7f8f3.png';
+
+        const audio = new Audio("sounds/target.mp3");
+
         class Rectangulo {
-            constructor(color, alto, ancho, x, y) {
+            constructor(color, alto, ancho, x, y, image = null) {
                 this.color = color;
                 this.alto = alto;
                 this.ancho = ancho;
                 this.x = x;
                 this.y = y;
+                this.image = image;
             }
 
             draw(context) {
-                context.fillStyle = this.color;
-                context.fillRect(this.x, this.y, this.ancho, this.alto);
-                context.strokeRect(this.x, this.y, this.ancho, this.alto);
+                if (this.image) {
+                    context.drawImage(this.image, this.x, this.y, this.ancho, this.alto);
+                } else {
+                    context.fillStyle = this.color;
+                    context.fillRect(this.x, this.y, this.ancho, this.alto);
+                    context.strokeRect(this.x, this.y, this.ancho, this.alto);
+                }
             }
+
 
             update() {
                 if (!pause) {
@@ -78,7 +89,7 @@
                     this.y + this.alto < otroRect.y);
             }
         }
-        var player = new Rectangulo("black", 30, 30, x, y);
+        var player = new Rectangulo("black", 70, 70, x, y, playerImage);
         var semilla = new Rectangulo("white", 10, 10, 300, 200);
         var walls = [
             new Rectangulo("gray", 30, 200, 70, 200),
@@ -119,16 +130,23 @@
             if (player.colision(semilla)) {
                 player.color = "pink";
                 score += 10
-
+                
                 do {//función para que no vaya a salir dentro de wall
                     semilla.x = Math.random() * (DOC.width - semilla.ancho);
                     semilla.y = Math.random() * (DOC.height - semilla.alto);
                 } while (walls.some(function (wall) {
                     return semilla.colision(wall);
+
                 }));
-            } else {
-                player.color = "black";
+                audio.currentTime = 0;
+                audio.play();
             }
+            // } else {
+            //     player.color = "black";
+            // }
+
+         
+
 
             if (pause) {
 
@@ -139,11 +157,11 @@
                 context.font = "50px bakso sapi";
                 context.textAlign = "center";
                 context.fillText("Pausao", DOC.width / 2, DOC.height / 2);
-            } else {
-                context.fillStyle = "white";
-                context.font = "20px bakso sapi";
-                context.fillText("Score: " + score, 10, 30);
-            }
+            } //else {
+            context.fillStyle = "white";
+            context.font = "20px bakso sapi";
+            context.fillText("Score: " + score, 10, 30);
+            //}
         }
 
 
@@ -168,13 +186,15 @@
         });
 
         function gameLoop() {
-            // if (!pause) {
             drawRect();
-            //}
             requestAnimationFrame(gameLoop);
         }
 
-        gameLoop();
+        playerImage.onload = function () {
+            gameLoop();
+        };
+
+        // gameLoop();
         //Mi apoyo emocional
         // context.fillStyle = "blue";
         // context.fillRect(50, 50, 100, 100);
